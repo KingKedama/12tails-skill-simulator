@@ -70,8 +70,8 @@ var skillMolCReq = [		0,0,0,0,
                     		11,11,11,11,
                     		13,13,13,13
                     ];
-					
-					function getUrlVars() {
+
+function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
         vars[key] = value;

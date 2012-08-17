@@ -78,3 +78,4 @@ function getUrlVars() {
     });
     return vars;
 }
+alert(skillMolBReq);

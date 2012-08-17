@@ -78,8 +78,9 @@ function getUrlVars() {
     });
     return vars;
 }
+var hook;
 $(document).ready(function(){
-    var hook = document.getElementById('skill_simulator_hook');
+    hook = $('#skill_simulator_hook');
     hook.html('banamana');
     var htmlvars=getUrlVars();
 });

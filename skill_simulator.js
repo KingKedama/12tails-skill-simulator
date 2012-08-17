@@ -80,7 +80,7 @@ function getUrlVars() {
 }
 var hook;
 $(document).ready(function(){
-    hook = $('#skill_simulator_hook\.E2\.80\.8B\.E2\.80\.8B');
+    hook = $('#skill_simulator_hook');
     hook.html('banamana');
     var htmlvars=getUrlVars();
 });

@@ -79,9 +79,22 @@ function getUrlVars() {
     return vars;
 }
 var hook;
+var lvl=2, Basicskill= [0,0,0,0,0,0,0,0], Askill=[0,0,0,0,0,0,0,0], Bskill, Cskill;
 $(document).ready(function(){
     hook = $('#skill_simulator_hook');
     hook.html('banamana');
     var htmlvars=getUrlVars();
+	if(htmlvars['lvl']){
+        lvl=parseInt(htmlvars['lvl'],10);
+	};
+    
+	Basicskill=htmlvars['basic'];
+	Askill=htmlvars['a'];
+	Bskill=htmlvars['b'];
+	Cskill=htmlvars['c'];
+	
+	//generate the initial layout html
+	var html =''; 
+	
 });
 //addOnloadHook();

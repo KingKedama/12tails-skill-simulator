@@ -115,23 +115,22 @@ function stringToIntArray(string,array){
 function isValid(){
 };
 
+function loadImg(i,j,img,tree){
+    var name=tree+i+''+j;
+    $('#'+name).append(img);
+    $('#'+name).click(function(){
+        clickSkill(tree,img.id,i,j);
+    });
+    
+}
 function makeTable(tree){
     var html ='<table border="0"  width="300" >'; 
     for(var i = 0;i < 8;i++){
         html+='<tr>';
         for(var j = 0; j < 4; j++){
-            html+='<td id="'+i+''+j+'">';
-            if(skills['mole'][tree+'Lv'][i][j] !=200){
-                //html+=skills['mole'][tree+'Lv'][i][j];
-                
-                var img = document.createElement('img');
-                img.src = 'https://raw.github.com/KingKedama/12tails-skill-simulator/master/mole/th_'+skills['mole'][tree+'Name'][i][j]+'.png';
-                img.onload= function (evt) {
-                    console.log(i+''+j);
-                    $('#'+i+''+j).append(img);
-                }
-                
-            }
+         
+            html+='<td id="'+tree+i+''+j+'">';
+            
             html+='</td>';
         }
         html+= '<tr>'
@@ -140,6 +139,23 @@ function makeTable(tree){
     return html;
 
 }
+function loadImages(tree){
+    for(var i = 0;i < 8;i++){
+        for(var j = 0; j < 4; j++){
+            var name=skills['mole'][tree+'Name'][i][j];
+            var img = document.createElement('img');
+            img.src = 'https://raw.github.com/KingKedama/12tails-skill-simulator/master/mole/th_'+name+'.png';
+            img.id=name;
+            img.onload=loadImg(i,j,img,tree);
+            
+        }
+    }
+}
+function clickSkill(tree,name,row,level){
+    $('#'+name).hide();
+    
+}
+
 $(document).ready(function(){
     hook = $('#skill_simulator_hook');
     hook.html('banamana');
@@ -157,5 +173,6 @@ $(document).ready(function(){
 	var html =''; 
     html += makeTable('Basic');
 	hook.html(html);
+    loadImages('Basic');
 });
 //addOnloadHook();

@@ -55,6 +55,14 @@ var skills= {
                  	      	[23,25,27,0]
                     ],
         BasicName : [['nAttack1','nAttack2','nAttack3','nAttack4'],
+                     ['cAttack1','cAttack2','',''],
+                     ['','','',''],
+                     ['','','',''],
+                     ['','','',''],
+                     ['','','',''],
+                     ['','','',''],
+                     ['','','','']],
+        AName : [['','','',''],
                      ['','','',''],
                      ['','','',''],
                      ['','','',''],
@@ -124,7 +132,8 @@ function loadImg(i,j,img,tree){
     
 }
 function makeTable(tree){
-    var html ='<table border="0"  width="300" >'; 
+    
+    var html ='<div style="float: left;"><table border="0"  width="300" >'; 
     for(var i = 0;i < 8;i++){
         html+='<tr>';
         for(var j = 0; j < 4; j++){
@@ -135,7 +144,7 @@ function makeTable(tree){
         }
         html+= '<tr>'
     }
-    html+='</table>';
+    html+='</table></div>';
     return html;
 
 }
@@ -146,7 +155,9 @@ function loadImages(tree){
             var img = document.createElement('img');
             img.src = 'https://raw.github.com/KingKedama/12tails-skill-simulator/master/mole/th_'+name+'.png';
             img.id=name;
-            img.onload=loadImg(i,j,img,tree);
+            //img.onload=
+            //TODO look into:this seems to work fine like this, maybe jquery is handling it?
+            loadImg(i,j,img,tree);
             
         }
     }
@@ -170,9 +181,12 @@ $(document).ready(function(){
     stringToIntArray(htmlvars['b'],Bskill);
     stringToIntArray(htmlvars['c'],Cskill);
 	//generate the initial layout html
-	var html =''; 
+	var html ='<div style="width: 1200px;">'; 
     html += makeTable('Basic');
+    html += makeTable('A');
+    html += '</div>';
 	hook.html(html);
     loadImages('Basic');
+    loadImages('A');
 });
 //addOnloadHook();

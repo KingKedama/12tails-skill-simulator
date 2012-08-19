@@ -120,14 +120,17 @@ function makeTable(tree){
     for(var i = 0;i < 8;i++){
         html+='<tr>';
         for(var j = 0; j < 4; j++){
-            html+='<td>';
+            html+='<td id="'+i+''+j+'">';
             if(skills['mole'][tree+'Lv'][i][j] !=200){
                 //html+=skills['mole'][tree+'Lv'][i][j];
-               
-                var image='https://raw.github.com/KingKedama/12tails-skill-simulator/master/mole/th_'+skills['mole'][tree+'Name'][i][j];
-                if(image){
-                    html+='<img scr="'+image+'"></img>';
+                
+                var img = document.createElement('img');
+                img.src = 'https://raw.github.com/KingKedama/12tails-skill-simulator/master/mole/th_'+skills['mole'][tree+'Name'][i][j]+'.png';
+                img.onload= function (evt) {
+                    console.log(i+''+j);
+                    $('#'+i+''+j).append(img);
                 }
+                
             }
             html+='</td>';
         }
